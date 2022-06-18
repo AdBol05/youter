@@ -6,6 +6,12 @@ let lines = file.split("\n");
 let table = [];
 let ids = [];
 
+console.log("__  __            __          ");
+console.log("\\ \\/ /___  __  __/ /____  _____");
+console.log(" \\  / __ \\/ / / / __/ _ \\/ ___/");
+console.log(" / / /_/ / /_/ / /_/  __/ /    ");
+console.log("/_/\\____/\\__,_/\\__/\\___/_/     ");
+
 //resolve video IDs
 lines.forEach(line => {table.push(line.split("=")[1]);});
 ids = table.filter(element => {return element !== undefined;});
