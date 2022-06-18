@@ -6,4 +6,4 @@ Install youtube-mp3-downloader before use.
     npm install youtube-mp3-downloader -save
     
 # Input
-Paste video URLs into URL.txt
+Paste youtube video URLs into URL.txt
