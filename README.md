@@ -9,7 +9,9 @@ Install youtube-mp3-downloader and ffmpeg.
 
 
 Install NodeJS(if necessary)
+
 Windows: https://nodejs.org/en/download/
+
 Linux:
 
     sudo apt install nodejs
