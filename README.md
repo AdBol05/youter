@@ -2,13 +2,14 @@
 Youtube bulk mp3 downloader based on youtube-mp3-downloader by ytb2mp3: https://github.com/ytb2mp3/youtube-mp3-downloader
 
 # Before use
-Install youtube-mp3-downloader and ffmpeg.
+Install youtube-mp3-downloader and ffmpeg. ->
     
     npm install youtube-mp3-downloader -save
     sudo apt install ffmpeg
 
 
-Install NodeJS(if necessary)
+
+Install NodeJS(if necessary) ->
 
 Windows: https://nodejs.org/en/download/
 
