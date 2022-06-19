@@ -18,7 +18,7 @@ lines.forEach(line => {
         table.push(line.split("=")[1]);});
 ids = table.filter(element => {return element !== undefined;});
 
-//Configure YoutubeMp3Downloader with your settings
+//YoutubeMp3Downloader setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
     "outputPath": "./download",             // Output file location
