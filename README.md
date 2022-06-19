@@ -13,7 +13,7 @@ Linux:
     sudo apt install ffmpeg
 
 ___
-Install NodeJS(if necessary) ->
+Install NodeJS (if necessary) ->
 
 Windows: https://nodejs.org/en/download/
 
