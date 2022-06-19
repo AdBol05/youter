@@ -23,7 +23,7 @@ Linux:
 ___
 
 Set ffmpeg binary path and output path in index.js
-![image](https://user-images.githubusercontent.com/98588523/174434530-891b1c6a-ff2f-4c8b-bb77-a05d50cbcca2.png)
+![image](https://user-images.githubusercontent.com/98588523/174477775-7de94051-483b-4183-a764-447cb2cbb1d4.png)
 
 # Input
 Paste youtube video URLs into URL.txt (one URL per line).
