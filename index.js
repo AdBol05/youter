@@ -35,6 +35,7 @@ console.log("progress: \n");
 
 //download all links and save mp3
 ids.forEach( id => {
+        console.log("started process for id %s \n", id);
         YD.download(id);
         YD.on("finished", function(err, data) {console.log('\x1b[32m%s\x1b[0m',JSON.stringify(data));console.log("\n");});
         YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
