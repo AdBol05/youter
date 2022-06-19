@@ -18,6 +18,8 @@ lines.forEach(line => {
         table.push(line.split("=")[1]);});
 ids = table.filter(element => {return element !== undefined;});
 
+if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
+
 //YoutubeMp3Downloader setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
