@@ -15,6 +15,7 @@ Windows: https://nodejs.org/en/download/
 Linux:
 
     sudo apt install nodejs
+___
 
 Set ffmpeg binary path and output path in index.js
 ![image](https://user-images.githubusercontent.com/98588523/174434530-891b1c6a-ff2f-4c8b-bb77-a05d50cbcca2.png)
