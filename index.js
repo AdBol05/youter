@@ -20,7 +20,7 @@ ids = table.filter(element => {return element !== undefined;});
 
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
 
-//YoutubeMp3Downloader setup
+//YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
     "outputPath": "./download",             // Output file location
@@ -39,7 +39,8 @@ console.log("progress: \n");
 ids.forEach( id => {
         console.log("started process for id %s \n", id);
         YD.download(id);
-        YD.on("finished", function(err, data) {console.log('\x1b[32m%s\x1b[0m',JSON.stringify(data));console.log("\n");});
-        YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
-        YD.on("progress", function(progress) {console.log(JSON.stringify(progress)); console.log("\n");});
 });
+
+YD.on("finished", function(err, data) {console.log(JSON.stringify(data));console.log('\x1b[32m%s\x1b[0m',"\n Downlodaded song to:", data.file); console.log("\n");});
+YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
+YD.on("progress", function(progress) {console.log(JSON.stringify(progress)); console.log("\n");});
