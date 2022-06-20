@@ -23,7 +23,7 @@ if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID availab
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
-    "outputPath": "./download",             // Output file location
+    "outputPath": "./download",             // Output folder location
     "youtubeVideoQuality": "highestaudio",  // Desired video quality
     "queueParallelism": ids.length,         // Download parallelism
     "progressTimeout": 500,                 // Interval in ms for the progress reports
