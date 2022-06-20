@@ -26,7 +26,7 @@ var YD = new YoutubeMp3Downloader({
     "outputPath": "./download",             // Output file location
     "youtubeVideoQuality": "highestaudio",  // Desired video quality (default: highestaudio)
     "queueParallelism": 2,                  // Download parallelism (default: 1)
-    "progressTimeout": 2000,                // Interval in ms for the progress reports (default: 1000)
+    "progressTimeout": 1000,                // Interval in ms for the progress reports (default: 1000)
     "allowWebm": false                      // Enable download from WebM sources (default: false)
 });
 
@@ -41,6 +41,6 @@ ids.forEach( id => {
         YD.download(id);
 });
 
-YD.on("finished", function(err, data) {console.log('\x1b[32m%s\x1b[0m',"Downlodaded song to:", data.file); console.log("\n");});
+YD.on("finished", function(err, data) {console.log('\x1b[32m%s\x1b[0m',"Downloaded MP3 to:", data.file); console.log("\n");});
 YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
 YD.on("progress", function(progress) {console.log(progress.videoId, ":", progress.progress.percentage.toFixed(2), "\%"); console.log("\n");});
