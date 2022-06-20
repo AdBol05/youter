@@ -28,4 +28,6 @@ Set ffmpeg binary path and output path in index.js
 ![image](https://user-images.githubusercontent.com/98588523/174477775-7de94051-483b-4183-a764-447cb2cbb1d4.png)
 
 # Usage
-Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js. The scrip should print out a welcome screen folowed by youtube video IDs. After a while a download process should begin outputting progress information. 
+Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. The scrip should print out a welcome screen folowed by youtube video IDs. After a while a download process should begin outputting progress information. 
+
+    node index.js
