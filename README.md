@@ -1,7 +1,7 @@
 # Youter
 Youtube bulk mp3 downloader based on youtube-mp3-downloader by ytb2mp3: https://github.com/ytb2mp3/youtube-mp3-downloader
 
-DISCLAIMER: This project was designed for my personal needs but it works quite well, so I decided to make this repo public. It is just an implementation of the youtube-mp3-downloader module, so all credit should go to ytb2mp3. I wrote and tested it on Linux. Windows compatibility hasn't been tested yet. 
+DISCLAIMER: This project was designed for my personal needs but it works quite well, so I decided to make it public. It is just an implementation of the youtube-mp3-downloader module, so all credit should go to ytb2mp3. I wrote and tested it on Linux. Windows compatibility hasn't been tested yet. 
 
 # Before use
 Install youtube-mp3-downloader and ffmpeg. ->
