@@ -25,8 +25,8 @@ var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
     "outputPath": "./download",             // Output file location
     "youtubeVideoQuality": "highestaudio",  // Desired video quality (default: highestaudio)
-    "queueParallelism": 2,                  // Download parallelism (default: 1)
-    "progressTimeout": 1000,                // Interval in ms for the progress reports (default: 1000)
+    "queueParallelism": ids.length,         // Download parallelism (default: 1)
+    "progressTimeout": 500,                 // Interval in ms for the progress reports (default: 1000)
     "allowWebm": false                      // Enable download from WebM sources (default: false)
 });
 
