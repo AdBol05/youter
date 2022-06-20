@@ -24,10 +24,10 @@ if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID availab
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
     "outputPath": "./download",             // Output file location
-    "youtubeVideoQuality": "highestaudio",  // Desired video quality (default: highestaudio)
-    "queueParallelism": ids.length,         // Download parallelism (default: 1)
-    "progressTimeout": 500,                 // Interval in ms for the progress reports (default: 1000)
-    "allowWebm": false                      // Enable download from WebM sources (default: false)
+    "youtubeVideoQuality": "highestaudio",  // Desired video quality
+    "queueParallelism": ids.length,         // Download parallelism
+    "progressTimeout": 500,                 // Interval in ms for the progress reports
+    "allowWebm": false                      // Enable download from WebM sources
 });
 
 console.log("\n");
@@ -43,4 +43,4 @@ ids.forEach( id => {
 
 YD.on("finished", function(err, data) {console.log('\x1b[32m%s\x1b[0m',"Downloaded MP3 to:", data.file); console.log("\n");});
 YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
-YD.on("progress", function(progress) {console.log(progress.videoId, ":", progress.progress.percentage.toFixed(2), "\%"); console.log("\n");});
+YD.on("progress", function(progress) {console.log(progress.videoId, ":", progress.progress.percentage.toFixed(), "\%"); console.log("\n");});
