@@ -34,7 +34,7 @@ Copy-paste desired youtube video links into URL.txt (one URL per line) and run i
     node index.js
 
 # Multithreaded mode
-The script downloads one file at a time by default. By adding argument "multithread" each download gets its own thread(all running at the same time), speeding up the total download speed.
+The script downloads one file at a time by default. By adding argument "multithread" each ID gets its own download instance (all running at the same time), speeding up the total download speed.
 
     node index.js multithread
 
