@@ -32,7 +32,7 @@ var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
     "outputPath": "./download",             // output folder location
     "youtubeVideoQuality": "highestaudio",  // Desired video quality
-    "queueParallelism": paralelism,         // Download parallelism
+    "queueParallelism": parallelism,         // Download parallelism
     "progressTimeout": 500,                 // Interval in ms for the progress reports
     "allowWebm": false                      // Enable download from WebM sources
 });
