@@ -26,7 +26,17 @@ Linux:
 ___
 
 Set ffmpeg binary path and output path in index.js
-![image](https://user-images.githubusercontent.com/98588523/174765778-63332cd8-dde6-4824-a5a9-77b17a4d10ac.png)
+```javascript
+//YoutubeMp3Downloder setup
+var YD = new YoutubeMp3Downloader({
+    "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
+    "outputPath": "./download",             // output folder location
+    "youtubeVideoQuality": "highestaudio",  // Desired video quality
+    "queueParallelism": paralelism,         // Download parallelism
+    "progressTimeout": 500,                 // Interval in ms for the progress reports
+    "allowWebm": false                      // Enable download from WebM sources
+});
+```
 
 # Usage
 Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. URL.txt must be located in the same folder as index.js. The script should print out a welcome screen followed by youtube video ID list. After a while a download process begins outputting progress information. 
