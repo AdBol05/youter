@@ -38,6 +38,7 @@ The script downloads one file at a time by default. By adding argument "multithr
 
     node index.js multithread
 
+___
 You can also set your own number of threads by using argument "threads" and a number.
 
 example:
