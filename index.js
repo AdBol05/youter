@@ -1,6 +1,9 @@
 const fs = require("fs");
 var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 
+const args = process.argv.slice(2);
+let paralelism = 1;
+
 const file = fs.readFileSync("URL.txt").toString("utf-8");
 let lines = file.split("\n");
 let table = [];
@@ -20,12 +23,15 @@ ids = table.filter(element => {return element !== undefined;});
 
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
 
+if (args[0] === "multithread"){paralelism = ids.length;}
+if (args[0] === "threads"){paralelism = args[1];}
+
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
-    "outputPath": "./download",             // Output folder location
+    "outputPath": "./download",             // output folder location
     "youtubeVideoQuality": "highestaudio",  // Desired video quality
-    "queueParallelism": 1,         // Download parallelism
+    "queueParallelism": paralelism,         // Download parallelism
     "progressTimeout": 500,                 // Interval in ms for the progress reports
     "allowWebm": false                      // Enable download from WebM sources
 });
