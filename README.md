@@ -30,9 +30,9 @@ ___
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
-    "outputPath": outPath,             // output folder location
+    "outputPath": outPath,                  // output folder location
     "youtubeVideoQuality": "highestaudio",  // Desired video quality
-    "queueParallelism": parallelism,         // Download parallelism
+    "queueParallelism": parallelism,        // Download parallelism
     "progressTimeout": 500,                 // Interval in ms for the progress reports
     "allowWebm": false                      // Enable download from WebM sources
 });
