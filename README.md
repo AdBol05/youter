@@ -32,3 +32,8 @@ Set ffmpeg binary path and output path in index.js
 Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. URL.txt must be located in the same folder as index.js. The scrip should print out a welcome screen folowed by youtube video ID list. After a while a download process begins outputting progress information. 
 
     node index.js
+
+# Multithreaded mode
+The script downloads one file at a time by default. By adding argument "multithread" each download gets its own thread(all running at the same time), speeding up the total download speed.
+
+    node index.js multithread
