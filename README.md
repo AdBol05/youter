@@ -5,7 +5,7 @@ The idea was to paste multiple video URLs into a text file and automatically dow
 DISCLAIMER: This project was designed for my personal needs but works quite well, so I decided to make it public. It is just an implementation of the youtube-mp3-downloader module, so all credit should go to ytb2mp3. I wrote and tested it on Linux. Windows compatibility hasn't been tested yet.
 
 # Before use
-Install youtube-mp3-downloader and ffmpeg. ->
+### Install youtube-mp3-downloader and ffmpeg. ->
     
     npm install youtube-mp3-downloader -save
 
@@ -16,7 +16,7 @@ Linux:
     sudo apt install ffmpeg
 
 ___
-Install NodeJS (if necessary) ->
+### Install NodeJS (if necessary) ->
 
 Windows: https://nodejs.org/en/download/
 
@@ -25,7 +25,7 @@ Linux:
     sudo apt install nodejs
 ___
 
-Set ffmpeg binary path and output path in index.js
+### Set ffmpeg binary path and output path in index.js
 ```javascript
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
@@ -55,4 +55,4 @@ example:
 
     node index.js threads 4
 
-WARNING: Use with caution. Multithreaded mode might not be stable at higher number of links.
+### WARNING: Use with caution. Multithreaded mode might not be stable at higher number of links.
