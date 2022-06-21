@@ -38,4 +38,4 @@ The script downloads one file at a time by default. By adding argument "multithr
 
     node index.js multithread
 
-WARNING: Use with causion. Multithreaded mode might not be stable at higher links count.
+WARNING: Use with causion. Multithreaded mode might not be stable at higher link counts.
