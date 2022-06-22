@@ -27,7 +27,7 @@ ___
 
 ### Set output folder path and ffmpeg binary location in index.js
 ```javascript
-var outPath = "./download";
+const outPath = "./download";
 ```
 
 ```javascript
