@@ -25,7 +25,11 @@ Linux:
     sudo apt install nodejs
 ___
 
-### Set ffmpeg binary path and otuput folder in index.js
+### Set output folder path and ffmpeg binary location in index.js
+```javascript
+var outPath = "./download";
+```
+
 ```javascript
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
@@ -36,9 +40,6 @@ var YD = new YoutubeMp3Downloader({
     "progressTimeout": 500,                 // Interval in ms for the progress reports
     "allowWebm": false                      // Enable download from WebM sources
 });
-```
-```javascript
-var outPath = "./download";
 ```
 
 # Usage
