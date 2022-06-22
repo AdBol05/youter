@@ -9,7 +9,7 @@ let lines = file.split("\n");
 let table = [];
 let ids = [];
 
-var outPath = "./download";
+const outPath = "./download";
 if (!fs.existsSync(outPath)) {fs.mkdirSync(outPath);}
 
 console.log("__  __            __          ");
