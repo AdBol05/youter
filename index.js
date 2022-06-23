@@ -19,8 +19,6 @@ console.log(" \\  / __ \\/ / / / __/ _ \\/ ___/");
 console.log(" / / /_/ / /_/ / /_/  __/ /    ");
 console.log("/_/\\____/\\__,_/\\__/\\___/_/     ");
 
-console.log(config);
-
 //resolve video IDs
 lines.forEach(line => {
         line = line.replace("&list","");
