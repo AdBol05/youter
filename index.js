@@ -1,22 +1,25 @@
 const fs = require("fs");
 var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 
+var config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
+
 const args = process.argv.slice(2);
-let parallelism = 1;
+let parallelism = config.DefaultThreads;
 
 const file = fs.readFileSync("URL.txt").toString("utf-8");
 let lines = file.split("\n");
 let table = [];
 let ids = [];
 
-const outPath = "./download";
-if (!fs.existsSync(outPath)) {fs.mkdirSync(outPath);}
+if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 
 console.log("__  __            __          ");
 console.log("\\ \\/ /___  __  __/ /____  _____");
 console.log(" \\  / __ \\/ / / / __/ _ \\/ ___/");
 console.log(" / / /_/ / /_/ / /_/  __/ /    ");
 console.log("/_/\\____/\\__,_/\\__/\\___/_/     ");
+
+console.log(config);
 
 //resolve video IDs
 lines.forEach(line => {
@@ -31,12 +34,12 @@ if (args[0] === "threads"){parallelism = args[1];}
 
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
-    "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
-    "outputPath": outPath,                  // output folder location
-    "youtubeVideoQuality": "highestaudio",  // Desired video quality
+    "ffmpegPath": config.ffmpegPath,        // FFmpeg binary location
+    "outputPath": config.OutputPath,        // output folder location
+    "youtubeVideoQuality": config.Quality,  // Desired video quality
     "queueParallelism": parallelism,        // Download parallelism
-    "progressTimeout": 500,                 // Interval in ms for the progress reports
-    "allowWebm": false                      // Enable download from WebM sources
+    "progressTimeout": config.ReportDelay,  // Interval in ms for the progress reports
+    "allowWebm": config.AllowWebM           // Enable download from WebM sources
 });
 
 console.log("\n");
