@@ -25,21 +25,16 @@ Linux:
     sudo apt install nodejs
 ___
 
-### Set output folder path and ffmpeg binary location in index.js
-```javascript
-const outPath = "./download";
-```
-
-```javascript
-//YoutubeMp3Downloder setup
-var YD = new YoutubeMp3Downloader({
-    "ffmpegPath": "ffmpeg",                 // FFmpeg binary location
-    "outputPath": outPath,                  // output folder location
-    "youtubeVideoQuality": "highestaudio",  // Desired video quality
-    "queueParallelism": parallelism,        // Download parallelism
-    "progressTimeout": 500,                 // Interval in ms for the progress reports
-    "allowWebm": false                      // Enable download from WebM sources
-});
+### Set output folder path and ffmpeg binary location in config.json
+```json
+{
+"OutputPath": "./download",
+"DefaultThreads": 1,
+"ffmpegPath": "ffmpeg",
+"Quality": "highestaudio",
+"ReportDelay": 500,
+"AllowWebM": false
+}
 ```
 
 # Usage
