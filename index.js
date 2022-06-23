@@ -11,13 +11,13 @@ let lines = file.split("\n");
 let table = [];
 let ids = [];
 
-if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
-
 console.log("__  __            __          ");
 console.log("\\ \\/ /___  __  __/ /____  _____");
 console.log(" \\  / __ \\/ / / / __/ _ \\/ ___/");
 console.log(" / / /_/ / /_/ / /_/  __/ /    ");
 console.log("/_/\\____/\\__,_/\\__/\\___/_/     ");
+
+if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 
 //resolve video IDs
 lines.forEach(line => {
