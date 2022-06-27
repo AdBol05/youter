@@ -6,6 +6,7 @@ DISCLAIMER: This project was designed for my personal needs but works quite well
 
 # Before use
 ### Install ffmpeg and all dependencies. ->
+(in the project's directory)
     
     npm i
 
