@@ -42,6 +42,10 @@ ___
 # Usage
 Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. URL.txt must be located in the same folder as index.js. The script should print out a welcome screen followed by youtube video ID list. After a while a download process begins outputting progress information. 
 
+Output should look something like this:
+![image](https://user-images.githubusercontent.com/98588523/175989169-9c7019d0-7a3c-4a75-a409-1d5946620d52.png)
+
+
     node index.js
 
 # Multithreaded mode
