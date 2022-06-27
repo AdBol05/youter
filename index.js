@@ -16,10 +16,10 @@ let ids = [];
 let prn = 0;
 
 //welcome screen
-console.log('\x1b[32m%s\x1b[0m',"__  __            __          ");
-console.log('\x1b[32m%s\x1b[0m',"\\ \\/ /___  __  __/ /____  _____");
-console.log('\x1b[32m%s\x1b[0m'," \\  / __ \\/ / / / __/ _ \\/ ___/");
-console.log('\x1b[32m%s\x1b[0m'," / / /_/ / /_/ / /_/  __/ /    ");
+console.log('\x1b[32m%s\x1b[0m',"__  __            __               ");
+console.log('\x1b[32m%s\x1b[0m',"\\ \\/ /___  __  __/ /____  ____  _");
+console.log('\x1b[32m%s\x1b[0m'," \\  / __ \\/ / / / __/ _ \\/ ___/ ");
+console.log('\x1b[32m%s\x1b[0m'," / / /_/ / /_/ / /_/  __/ /        ");
 console.log('\x1b[32m%s\x1b[0m',"/_/\\____/\\__,_/\\__/\\___/_/     ");
 
 //check if output path exists
