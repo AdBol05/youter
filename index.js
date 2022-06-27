@@ -27,8 +27,8 @@ if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 
 //resolve video IDs
 lines.forEach(line => {
-	line = line.replace("&list","");
-	table.push(line.split("=")[1]);});
+        line = line.replace("&list","");
+        table.push(line.split("=")[1]);});
 ids = table.filter(element => {return element !== undefined;});
 
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
@@ -60,10 +60,10 @@ ids.forEach( id => {
     bars[id] = new AsciiBar({
         undoneSymbol: "-",
         doneSymbol: "#",
-        width: 50,
+        width: 70,
         formatString: '#percent #bar',
         total: 100,
-        enableSpinner: true,
+        enableSpinner: false,
         lastUpdateForTiming: false,
         autoStop : false,
         print: true,
@@ -82,9 +82,9 @@ YD.on("progress", function(progress) {
 });
 
 YD.on("finished", function(err, data) {
-	console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file);
-	console.log("\n");
+        console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file);
+        console.log("\n");
     //bars[data.videoId].stop();
-	prn++;
-	if (prn >= ids.length){process.exit(0);}
+        prn++;
+        if (prn >= ids.length){process.exit(0);}
 });
