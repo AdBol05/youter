@@ -2,19 +2,17 @@ const AsciiBar = require('ascii-bar').default;
 const fs = require("fs");
 var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 
-var config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
+var config = JSON.parse(fs.readFileSync("./config.json", "utf-8")); //read config
 
-const args = process.argv.slice(2);
-let parallelism = config.DefaultThreads;
+const args = process.argv.slice(2); //get process arguments
+let parallelism = config.DefaultThreads; //set default number of threads
 
 const file = fs.readFileSync("URL.txt").toString("utf-8");
 let lines = file.split("\n");
-let table = [];
-let ids = [];
-
-let prn = 0;
-
-let bars = {};
+let table = []; //temporary ID storage for cleaning
+let ids = []; //list of video IDs
+let prn = 0; //number of processes finished
+let bars = {}; //loading bars object
 
 //welcome screen
 console.log('\x1b[32m%s\x1b[0m',"__  __            __               ");
@@ -30,12 +28,12 @@ if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 lines.forEach(line => {
         line = line.replace("&list","");
         table.push(line.split("=")[1]);});
-ids = table.filter(element => {return element !== undefined;});
+ids = table.filter(element => {return element !== undefined;}); //clean up
 
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
 
-if (args[0] === "multithread"){parallelism = ids.length;}
-if (args[0] === "threads"){parallelism = args[1];}
+if (args[0] === "multithread"){parallelism = ids.length;} //set threads to number of IDs
+if (args[0] === "threads"){parallelism = args[1];} //set custom number of threads
 
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
@@ -47,6 +45,7 @@ var YD = new YoutubeMp3Downloader({
     "allowWebm": config.AllowWebM           // Enable download from WebM sources
 });
 
+//basic info
 console.log("\n");
 console.log("--------------------------------");
 console.log("List of videos to be downloaded:");
@@ -79,15 +78,14 @@ ids.forEach( id => {
 
 console.log("\n");
 
-YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
-YD.on("progress", function(progress) {
-    bars[progress.videoId].update(progress.progress.percentage.toFixed());
+YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");}); //error reports
+YD.on("progress", function(progress) { //download progress reports
+    bars[progress.videoId].update(progress.progress.percentage.toFixed()); //update progress bars
     console.log('\x1b[32m%s\x1b[0m',progress.videoId);
 });
-
-YD.on("finished", function(err, data) {
-        console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file);
-        console.log("\n");
-        prn++;
-        if (prn >= ids.length){process.exit(0);}
+YD.on("finished", function(err, data) { //download finished
+    console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file); //print download path
+    console.log("\n");
+    prn++;
+    if (prn >= ids.length){process.exit(0);} //exit when all downloads finished
 });
