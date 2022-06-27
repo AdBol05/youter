@@ -10,6 +10,7 @@ DISCLAIMER: This project was designed for my personal needs but works quite well
     
     npm i
 
+___
 Windows: http://ffmpeg.org/download.html
 
 Linux:
