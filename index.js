@@ -16,11 +16,11 @@ let ids = [];
 let prn = 0;
 
 //welcome screen
-console.log("__  __            __          ");
-console.log("\\ \\/ /___  __  __/ /____  _____");
-console.log(" \\  / __ \\/ / / / __/ _ \\/ ___/");
-console.log(" / / /_/ / /_/ / /_/  __/ /    ");
-console.log("/_/\\____/\\__,_/\\__/\\___/_/     ");
+console.log('\x1b[32m%s\x1b[0m',"__  __            __          ");
+console.log('\x1b[32m%s\x1b[0m',"\\ \\/ /___  __  __/ /____  _____");
+console.log('\x1b[32m%s\x1b[0m'," \\  / __ \\/ / / / __/ _ \\/ ___/");
+console.log('\x1b[32m%s\x1b[0m'," / / /_/ / /_/ / /_/  __/ /    ");
+console.log('\x1b[32m%s\x1b[0m',"/_/\\____/\\__,_/\\__/\\___/_/     ");
 
 //check if output path exists
 if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
@@ -59,9 +59,9 @@ console.log("progress: \n");
 
 //download all links and save mp3
 ids.forEach( id => {
-    console.log("started process for id %s \n", id);
+    console.log("started process for id %s", id);
     YD.download(id);
-    bars[id] = new AsciiBar({
+    bars[id] = new AsciiBar({ //set progress bar for every video
         undoneSymbol: "-",
         doneSymbol: "#",
         width: 70,
@@ -78,17 +78,17 @@ ids.forEach( id => {
     });
 });
 
+console.log("\n");
+
 YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");});
 YD.on("progress", function(progress) {
     bars[progress.videoId].update(progress.progress.percentage.toFixed());
     console.log('\x1b[32m%s\x1b[0m',progress.videoId);
-    //console.log("\n");
 });
 
 YD.on("finished", function(err, data) {
         console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file);
         console.log("\n");
-    //bars[data.videoId].stop();
         prn++;
         if (prn >= ids.length){process.exit(0);}
 });
