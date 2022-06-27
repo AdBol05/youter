@@ -49,8 +49,12 @@ var YD = new YoutubeMp3Downloader({
 });
 
 console.log("\n");
+console.log("--------------------------------");
 console.log("List of videos to be downloaded:");
 console.log(ids);
+console.log("--------------------------------");
+console.log("Number of threads: %d", parallelism);
+console.log("-------------------------------- \n");
 console.log("progress: \n");
 
 //download all links and save mp3
