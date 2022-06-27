@@ -70,7 +70,6 @@ ids.forEach( id => {
         autoStop : false,
         print: true,
         start: 0,
-        startDate: new Date().getTime(),
         stream: process.stdout,
         hideCursor: false,
     });
