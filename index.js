@@ -1,5 +1,4 @@
 const AsciiBar = require('ascii-bar').default;
-
 const fs = require("fs");
 var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 
@@ -14,6 +13,8 @@ let table = [];
 let ids = [];
 
 let prn = 0;
+
+let bars = {};
 
 //welcome screen
 console.log('\x1b[32m%s\x1b[0m',"__  __            __               ");
@@ -32,8 +33,6 @@ lines.forEach(line => {
 ids = table.filter(element => {return element !== undefined;});
 
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
-
-let bars = {};
 
 if (args[0] === "multithread"){parallelism = ids.length;}
 if (args[0] === "threads"){parallelism = args[1];}
