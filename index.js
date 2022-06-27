@@ -30,7 +30,7 @@ lines.forEach(line => {
         table.push(line.split("=")[1]);});
 ids = table.filter(element => {return element !== undefined;}); //clean up
 
-if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"No video ID available"); process.exit(1);}
+if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"\n Error: No video ID available"); process.exit(1);} //exit if no IDs available
 
 if (args[0] === "multithread"){parallelism = ids.length;} //set threads to number of IDs
 if (args[0] === "threads"){parallelism = args[1];} //set custom number of threads
