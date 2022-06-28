@@ -30,6 +30,7 @@ ___
 ### Set output folder path and ffmpeg binary location in config.json
 ```json
 {
+"URLpath": "./URL.txt",
 "OutputPath": "./download",
 "DefaultThreads": 1,
 "ffmpegPath": "ffmpeg",
