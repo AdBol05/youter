@@ -35,7 +35,12 @@ ___
 "ffmpegPath": "ffmpeg",
 "Quality": "highestaudio",
 "ReportDelay": 500,
-"AllowWebM": false
+"AllowWebM": false,
+"bar": {
+    "length": 70,
+    "undoneSymbol": "-",
+    "doneSymbol": "#"
+    }
 }
 ```
 
