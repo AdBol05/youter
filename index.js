@@ -60,9 +60,9 @@ ids.forEach( id => {
     console.log("started process for id %s", id);
     YD.download(id);
     bars[id] = new AsciiBar({ //set progress bar for every video
-        undoneSymbol: "-",
-        doneSymbol: "#",
-        width: 70,
+        undoneSymbol: config.bar.undoneSymbol,
+        doneSymbol: config.bar.doneSymbol,
+        width: config.bar.length,
         formatString: '#percent #bar',
         total: 100,
         enableSpinner: false,
