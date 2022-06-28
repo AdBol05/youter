@@ -26,8 +26,9 @@ if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 
 //resolve video IDs
 lines.forEach(line => {
-        line = line.replace("&list","");
-        table.push(line.split("=")[1]);});
+    if (!line.includes('=')){line = line.split('').reverse().join('').replace("/", "=").split('').reverse().join('');}
+    line = line.replace("&list","");
+    table.push(line.split("=")[1]);});
 ids = table.filter(element => {return element !== undefined;}); //clean up
 
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"\n Error: No video ID available"); process.exit(1);} //exit if no IDs available
