@@ -1,4 +1,5 @@
 {
+"URLpath": "./URL.txt",
 "OutputPath": "./download",
 "DefaultThreads": 1,
 "ffmpegPath": "ffmpeg",
