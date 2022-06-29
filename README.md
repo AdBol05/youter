@@ -46,7 +46,7 @@ ___
 ```
 
 # Usage
-Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. URL.txt must be located in the same folder as index.js. The script should print out a welcome screen followed by youtube video ID list. After a while a download process begins outputting progress information. 
+Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. The script should print out a welcome screen followed by youtube video ID list. After a while a download process begins outputting progress information. 
 
 Output should look something like this:
 
