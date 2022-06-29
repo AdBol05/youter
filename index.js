@@ -42,7 +42,7 @@ if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"\n Error: No video 
 if (args[0] === "multithread"){parallelism = ids.length;} //set threads to number of IDs
 if (args[0] === "threads"){ //set custom number of threads
     parallelism = args[1];
-    if(isNaN(parallelism)){console.error('\x1b[31m%s\x1b[0m',"\n ERROR: Invalid argument"); process.exit(9);} //exit if input is not a number
+    if(isNaN(parallelism)){console.error('\x1b[31m%s\x1b[0m',"\n Error: Invalid argument"); process.exit(9);} //exit if input is not a number
 }
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
