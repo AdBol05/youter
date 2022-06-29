@@ -2,7 +2,8 @@ const AsciiBar = require('ascii-bar').default;
 const fs = require("fs");
 var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 
-var config = JSON.parse(fs.readFileSync("./config.json", "utf-8")); //read config
+if(fs.existsSync("./config.json")) {var config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));} //read config if possible
+else{console.error('\x1b[31m%s\x1b[0m',"\n Error: Failed to read config file"); process.exit(1);} //exit if config file is not found
 
 const args = process.argv.slice(2); //get process arguments
 let parallelism = config.DefaultThreads; //set default number of threads
