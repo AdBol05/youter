@@ -40,8 +40,10 @@ ids = table.filter(element => {return element !== undefined;}); //clean up
 if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"\n Error: No video ID available"); process.exit(1);} //exit if no IDs available
 
 if (args[0] === "multithread"){parallelism = ids.length;} //set threads to number of IDs
-if (args[0] === "threads"){parallelism = args[1];} //set custom number of threads
-
+if (args[0] === "threads"){ //set custom number of threads
+    parallelism = args[1];
+    if(isNaN(parallelism)){console.error('\x1b[31m%s\x1b[0m',"\n ERROR: Invalid argument"); process.exit(9);} //exit if input is not a number
+}
 //YoutubeMp3Downloder setup
 var YD = new YoutubeMp3Downloader({
     "ffmpegPath": config.ffmpegPath,        // FFmpeg binary location
