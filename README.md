@@ -45,6 +45,8 @@ ___
 }
 ```
 
+If URL file or download directory doesn't exist, it will be automatically created.
+
 # Usage
 Copy-paste desired youtube video links into URL.txt (one URL per line) and run index.js in the script's directory. The script should print out a welcome screen followed by youtube video ID list. After a while a download process begins outputting progress information. 
 
