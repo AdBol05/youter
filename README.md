@@ -27,7 +27,7 @@ Linux:
     sudo apt install nodejs
 ___
 
-### Set output folder path and ffmpeg binary location in config.json
+### Set output folder path, URL.txt file path and ffmpeg binary location in config.json
 ```json
 {
 "URLpath": "./URL.txt",
