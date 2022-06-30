@@ -26,7 +26,7 @@ let lines = file.split("\n"); //get individual lines
 
 let table = []; //temporary ID storage for cleaning
 let ids = []; //list of video IDs
-let prn = 0; //number of processes finished
+let prn = 0; //number of finished processes
 let bars = {}; //loading bars object
 
 //check if output path exists (create if not)
