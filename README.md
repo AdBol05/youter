@@ -2,7 +2,7 @@
 Youtube bulk mp3 downloader based on youtube-mp3-downloader by ytb2mp3: https://github.com/ytb2mp3/youtube-mp3-downloader
 The idea was to paste multiple video URLs into a text file and automatically download all of them.
 
-DISCLAIMER: This project was designed for my personal needs but works quite well, so I decided to make it public. It is just an implementation of the youtube-mp3-downloader module, so all credit should go to ytb2mp3. I wrote and tested it on Linux. Windows compatibility hasn't been tested yet (runs in WSL and termux tho).
+DISCLAIMER: This project was designed for my personal needs (and is by far not the best solution) but works quite well, so I decided to make it public. It is just an implementation of the youtube-mp3-downloader module, so all credit should go to ytb2mp3. I wrote and tested it on Linux. Windows compatibility hasn't been tested yet (runs in WSL and termux tho).
 
 # Before use
 ### Install ffmpeg and all dependencies. ->
