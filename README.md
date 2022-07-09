@@ -52,7 +52,7 @@ Copy-paste desired youtube video links into URL.txt (one URL per line) and run i
 
 Output should look something like this:
 
-![image](https://user-images.githubusercontent.com/98588523/175989319-adbb1d3f-d14c-4db5-a4a5-413a217009ef.png)
+![image](https://user-images.githubusercontent.com/98588523/178123095-8e75761d-20c8-4b16-80e4-ca6cc24701c3.png)
 
 
     node index.js
