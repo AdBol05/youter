@@ -94,6 +94,6 @@ YD.on("progress", function(progress) { //download progress reports
 YD.on("finished", function(err, data) { //download finished
     console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file); //print download path
     console.log("\n");
-    prn++; //ncrease counter of finished downloads
+    prn++; //increase counter of finished downloads
     if (prn >= ids.length){process.exit(0);} //exit when all downloads finished
 });
