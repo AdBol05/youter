@@ -64,7 +64,7 @@ console.log("List of videos to be downloaded:");
 console.log(ids);
 console.log("--------------------------------");
 console.log("URL file path:", config.URLpath);
-console.log("Download path:", config.OutputPath);
+console.log("Download folder path:", config.OutputPath);
 console.log("--------------------------------");
 console.log("Number of threads: %d", parallelism);
 console.log("-------------------------------- \n");
