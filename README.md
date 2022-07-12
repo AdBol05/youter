@@ -58,6 +58,10 @@ Output should look something like this:
 
     node index.js
 
+# CLear URL file after download
+By setting ClearURL to true in cofig.json the script will clear the URL file after download. This feature is disabled by default.
+
+
 # Multithreaded mode
 The script downloads one file at a time by default. By adding argument "multithread" each ID gets its own download instance (all running at the same time), speeding up the total download speed.
 
@@ -70,7 +74,5 @@ example:
 
     node index.js threads 4
 
-# CLear URL file after download
-By setting ClearURL to true in cofig.json the script will clear the URL file after download. This feature is disabled by default.
 
 ### WARNING: Use with caution. Multithreaded mode might not be stable at higher number of links.
