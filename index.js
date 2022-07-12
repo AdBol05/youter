@@ -101,5 +101,5 @@ YD.on("finished", function(err, data) { //download finished
             fs.writeFile(config.URLpath, "", function(){});
         }
         process.exit(0); //exit when all downloads finished
-    } 
+    }
 });
