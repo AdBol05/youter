@@ -1,0 +1,15 @@
+{
+    "URLpath": "./URL.txt",
+    "OutputPath": "./download",
+    "DefaultThreads": 1,
+    "ffmpegPath": "ffmpeg",
+    "Quality": "highestaudio",
+    "ReportDelay": 500,
+    "AllowWebM": false,
+    "bar": {
+        "length": 70,
+        "undoneSymbol": "-",
+        "doneSymbol": "#"
+        }
+    }
+    
