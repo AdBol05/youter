@@ -70,4 +70,7 @@ example:
 
     node index.js threads 4
 
+# CLear URL file after download
+By setting ClearURL to true in cofig.json the script will clear the URL file after download. This feature is disabled by default.
+
 ### WARNING: Use with caution. Multithreaded mode might not be stable at higher number of links.
