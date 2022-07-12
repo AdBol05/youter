@@ -95,11 +95,11 @@ YD.on("finished", function(err, data) { //download finished
     console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file); //print download path
     console.log("\n");
     prn++; //increase counter of finished downloads
-    if (prn >= ids.length){ //exit when all downloads finished
+    if (prn >= ids.length){
         if(config.ClearURL){ //clear URL.txt file
             console.log("clearing URL file");
             fs.writeFile(config.URLpath, "", function(){});
         }
-        process.exit(0); //end script
+        process.exit(0); //exit when all downloads finished
     } 
 });
