@@ -37,7 +37,7 @@ ___
 "Quality": "highestaudio",
 "ReportDelay": 500,
 "AllowWebM": false,
-"ClearURL": true,
+"ClearURL": false,
 "bar": {
     "length": 70,
     "undoneSymbol": "-",
