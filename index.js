@@ -100,6 +100,6 @@ YD.on("finished", function(err, data) { //download finished
             console.log("clearing URL file");
             fs.writeFile(config.URLpath, "", function(){});
         }
-        process.exit(0);
+        process.exit(0); //end script
     } 
 });
