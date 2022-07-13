@@ -59,7 +59,7 @@ Output should look something like this:
     node index.js
 
 # CLear URL file after download
-By setting ClearURL to true in config.json the script will clear the URL file after download. This feature is disabled by default.
+By setting ClearURL to true in config.json the script will delete contents of the URL file after download. This feature is disabled by default.
 
 
 # Multithreaded mode
