@@ -97,7 +97,7 @@ YD.on("finished", function(err, data) { //download finished
     prn++; //increase counter of finished downloads
     if (prn >= ids.length){
         if(config.ClearURL){ //clear URL.txt file if enabled in config
-            console.log("clearing URL file");
+            console.log("Clearing URL file");
             fs.writeFile(config.URLpath, "", function(error){console.error(error);});
         }
         process.exit(0); //exit when all downloads finished
