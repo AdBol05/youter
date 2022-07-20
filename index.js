@@ -67,7 +67,9 @@ console.log("URL file path:", config.URLpath);
 console.log("Download folder path:", config.OutputPath);
 console.log("--------------------------------");
 console.log("Number of threads: %d", parallelism);
-console.log("-------------------------------- \n");
+console.log("--------------------------------");
+console.log("Clear URL file: " + config.ClearURL);
+console.log("--------------------------------");
 console.log("progress: \n");
 
 //download all links and save mp3
