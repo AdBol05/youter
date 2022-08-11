@@ -2,7 +2,7 @@
 Youtube bulk mp3 downloader based on youtube-mp3-downloader by ytb2mp3: https://github.com/ytb2mp3/youtube-mp3-downloader
 The idea was to paste multiple video URLs into a text file and automatically download all of them.
 
-### Hopefully temporary issue: YTDL-core has currently some issues (unexpected token error and crash), so I had to downgrade to version 4.9.1 which makes downloading pretty slow. This is a temporary "fix" and will hopefully be resolved soon (there already is an issue open on their github repository).
+### Hopefully a temporary issue: ytdl-core has currently some issues (unexpected token error and crash), so I had to downgrade to version 4.9.1 which makes downloading pretty slow. This is a temporary "fix" and will hopefully be resolved soon (there already is an issue open on their github repository).
 
 DISCLAIMER: This project was designed for my personal needs (and is by far not the best solution) but works quite well, so I decided to make it public. It is just an implementation of the youtube-mp3-downloader module, so all credit should go to ytb2mp3. I wrote and tested it on Linux. Windows compatibility hasn't been tested yet (runs in WSL and termux tho).
 
