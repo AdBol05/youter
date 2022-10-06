@@ -1,3 +1,4 @@
+![logo_green](https://user-images.githubusercontent.com/98588523/194335228-4940c632-fed4-4666-a9ba-6ba85d1c5870.png)
 # Youter
 Youtube bulk mp3 downloader based on youtube-mp3-downloader by ytb2mp3: https://github.com/ytb2mp3/youtube-mp3-downloader
 The idea was to paste multiple video URLs into a text file and automatically download all of them.
