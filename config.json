@@ -8,7 +8,7 @@
     "AllowWebM": false,
     "ClearURL": false,
     "bar": {
-        "length": 70,
+        "length": 55,
         "undoneSymbol": "-",
         "doneSymbol": "#"
         }
