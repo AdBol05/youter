@@ -61,7 +61,7 @@ var YD = new YoutubeMp3Downloader({
 console.log("\n");
 console.log("--------------------------------");
 console.log("List of videos to be downloaded:");
-console.log(ids);
+console.table(ids);
 console.log("--------------------------------");
 console.log("URL file path:", config.URLpath);
 console.log("Download folder path:", config.OutputPath);
