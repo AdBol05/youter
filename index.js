@@ -34,9 +34,9 @@ if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 
 //resolve video IDs
 lines.forEach(line => {
+    line = line.split("?si=")[0];
     if (!line.includes('=')){line = line.split('').reverse().join('').replace("/", "=").split('').reverse().join('');} //if link doesn't contain "=", replace last "/" with "="
     line = line.replace("&list",""); //get rid of "&list" for easier ID separation
-    line = line.split("?si=")[0];
     table.push(line.split("=")[1]);}); //add separated IDs to table
 ids = table.filter(element => {return element !== undefined;}); //get rid of undefined elements
 
