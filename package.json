@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@distube/ytdl-core": "^4.16.9",
+    "@distube/ytdl-core": "^4.16.10",
     "ascii-bar": "^1.0.3",
     "youtube-mp3-downloader": "github:adbol05/youtube-mp3-downloader-distube-ytdl"
   }
