@@ -1,7 +1,6 @@
-//import AsciiBar from 'ascii-bar';
 import * as fs from 'fs';
-//const { createFFmpeg } = require('@ffmpeg/ffmpeg');
 import { YtDlp } from 'ytdlp-nodejs';
+import {convertStreamToMp3} from "./utils.js";
 const ytdlp = new YtDlp();
 
 if(fs.existsSync("./config.json")) {var config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));} //read config if possible
@@ -28,8 +27,6 @@ let lines = file.split("\n"); //get individual lines
 
 let table = []; //temporary ID storage for cleaning
 let ids = []; //list of video IDs
-let prn = 0; //number of finished processes
-let bars = {}; //loading bars object
 
 //check if output path exists (create if not)
 if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
@@ -67,73 +64,28 @@ console.log("Clear URL file: " + config.ClearURL);
 console.log("--------------------------------");
 console.log("progress: \n");
 
-ids.forEach( id => {
-    /*bars[id] = new AsciiBar({
-        undoneSymbol: config.bar.undoneSymbol,
-        doneSymbol: config.bar.doneSymbol,
-        width: config.bar.length,
-        formatString: '#percent #bar',
-        autoStop : false,
-        stream: process.stdout,
-    });*/
+ids.forEach( async (id) => {
     let url = `https://www.youtube.com/watch?v=${id}`;
-    ytdlp.getTitleAsync(url).then((title) => {
-        console.log(`started process for id ${id} -> ${title}`);
-        ytdlp.downloadAsync(
-            url,
-            {
-                format: {
-                    filter: "audioonly",
-                    type: "mp3",
-                    quality: config.Quality
-                },
-                //filename: title,
-                output: `${config.OutputPath}/${title.trim()}.webm`,
-                postProcessors: [{
-                    key: "FFmpegExtractAudio",
-                    preferredCodec: "mp3",
-                    preferredQuality: "192",
-                }],
-                onProgress: (progress) => {
-                    if(progress.status === 'downloading'){
-                        console.log(`\x1b[32m[${id}]\x1b[0m ${title.trim()}\n\x1b[32m[${progress.percentage_str}]\x1b[0m ${progress.downloaded_str}/${progress.total_str} @ ${progress.speed_str} - ${progress.eta_str}\n`);
-                    }
-                    else if(progress.status === 'finished'){
-                        console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", `${config.OutputPath}/${title.trim()}.mp3`, ` ${progress.total_str}`);
-                        prn++;
-                        if (prn >= ids.length){
-                            if(config.ClearURL){console.log("Clearing URL file"); fs.writeFile(config.URLpath, "", function(error){console.error(error);});}
-                            process.exit(0);
-                        }
-                    }
-                    else {
-                        console.log("Unknown status!");
-                        console.log(progress);
-                    }
-                } 
+    
+    let title = await ytdlp.getTitleAsync(url)
+    title = title.replace(/[\\/:*?"<>|]/g, '');
+    let path = `${config.OutputPath}/${title.trim()}.mp3`
+    
+    console.log(`started process for id ${id} -> ${title}`);
+
+    let stream = await ytdlp.stream(
+        url,
+        {
+            filter: "audioonly",
+            format: "bestaudio",
+            onProgress: (progress) => {
+                if(progress.status === 'downloading'){console.log(`\x1b[32m[${id}]\x1b[0m ${title.trim()}\n\x1b[32m[${progress.percentage_str}]\x1b[0m ${progress.downloaded_str}/${progress.total_str} @ ${progress.speed_str} - ${progress.eta_str}\n`);}
+                else if(progress.status === 'finished'){console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", `${config.OutputPath}/${title.trim()}.mp3`, ` ${progress.total_str}`);}
+                else {console.log("Unknown status!");console.log(progress);}
             }
-        ).then(() => {
-            exec(`ffmpeg -i "${config.OutputPath}/${title.trim()}.webm" -vn -ab 192k -ar 44100 -y "${config.OutputPath}/${title.trim()}.mp3"`);
-          });
-    });
+        },
+    );
+
+    await convertStreamToMp3(stream, path);
 });
 
-console.log("\n");
-
-/*YD.on("error", function(error) {console.error('\x1b[31m%s\x1b[0m',error); console.log("\n");}); //error reports
-YD.on("progress", function(progress) { //download progress reports
-    bars[progress.videoId].update(progress.progress.percentage.toFixed()); //update progress bars
-    console.log('\x1b[32m%s\x1b[0m',progress.videoId); //print video ID next to progress bar
-});
-YD.on("finished", function(err, data) { //download finished
-    console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", data.file); //print download path
-    console.log("\n");
-    prn++; //increase counter of finished downloads
-    if (prn >= ids.length){
-        if(config.ClearURL){ //clear URL.txt file if enabled in config
-            console.log("Clearing URL file");
-            fs.writeFile(config.URLpath, "", function(error){console.error(error);});
-        }
-        process.exit(0); //exit when all downloads finished
-    }
-});*/
