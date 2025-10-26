@@ -3,53 +3,46 @@ import { YtDlp } from 'ytdlp-nodejs';
 import {convertStreamToMp3} from "./utils.js";
 const ytdlp = new YtDlp();
 
-if(fs.existsSync("./config.json")) {var config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));} //read config if possible
-else{console.error('\x1b[31m%s\x1b[0m',"\n Error: Failed to read config.json. File does not exist."); process.exit(1);} //exit if config file is not found
+if(fs.existsSync("./config.json")) {var config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));}
+else{console.error('\x1b[31m%s\x1b[0m',"\n Error: Failed to read config.json. File does not exist."); process.exit(1);}
 
-const args = process.argv.slice(2); //get process arguments
-let parallelism = config.DefaultThreads; //set default number of threads
+const args = process.argv.slice(2);
+let parallelism = config.DefaultThreads;
 
-//welcome screen
 console.log('\x1b[32m%s\x1b[0m',"__  __            __               ");
 console.log('\x1b[32m%s\x1b[0m',"\\ \\/ /___  __  __/ /____  _____  ");
 console.log('\x1b[32m%s\x1b[0m'," \\  / __ \\/ / / / __/ _ \\/ ___/ ");
 console.log('\x1b[32m%s\x1b[0m'," / / /_/ / /_/ / /_/  __/ /        ");
 console.log('\x1b[32m%s\x1b[0m',"/_/\\____/\\__,_/\\__/\\___/_/     ");
 
-//check if URL file exists (create and exit if not)
 if (!fs.existsSync(config.URLpath)) {console.error('\x1b[31m%s\x1b[0m','\n Error: ' + config.URLpath + ' not found, created.\n PLease paste desired video links into this file.');
     fs.openSync(config.URLpath, 'w');
     process.exit(1);
 }
 
-const file = fs.readFileSync(config.URLpath).toString("utf-8"); //read URL file
-let lines = file.split("\n"); //get individual lines
+const file = fs.readFileSync(config.URLpath).toString("utf-8");
+let lines = file.split("\n");
 
-let table = []; //temporary ID storage for cleaning
-let ids = []; //list of video IDs
+let table = [];
+let ids = []; 
 
-//check if output path exists (create if not)
 if (!fs.existsSync(config.OutputPath)) {fs.mkdirSync(config.OutputPath);}
 
-//resolve video IDs
 lines.forEach(line => {
     line = line.split("?si=")[0];
     if (!line.includes('=')){line = line.split('').reverse().join('').replace("/", "=").split('').reverse().join('');} //if link doesn't contain "=", replace last "/" with "="
-    line = line.replace("&list",""); //get rid of "&list" for easier ID separation
-    table.push(line.split("=")[1]);}); //add separated IDs to table
-ids = table.filter(element => {return element !== undefined;}); //get rid of undefined elements
+    line = line.replace("&list","");
+    table.push(line.split("=")[1]);});
+ids = table.filter(element => {return element !== undefined;});
 
-if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"\n Error: No video ID available"); process.exit(1);} //exit if no IDs available
+if (ids[0] === undefined){console.error('\x1b[31m%s\x1b[0m',"\n Error: No video ID available"); process.exit(1);}
 
-if (args[0] === "multithread"){parallelism = ids.length;} //set threads to number of IDs
-if (args[0] === "threads"){ //set custom number of threads
+if (args[0] === "multithread"){parallelism = ids.length;}
+if (args[0] === "threads"){
     parallelism = args[1];
-    if(isNaN(parallelism)){console.error('\x1b[31m%s\x1b[0m',"\n Error: Invalid argument"); process.exit(9);} //exit if input is not a number
+    if(isNaN(parallelism)){console.error('\x1b[31m%s\x1b[0m',"\n Error: Invalid argument"); process.exit(9);}
 }
 
-
-
-//basic info
 console.log("\n");
 console.log("--------------------------------");
 console.log("List of videos to be downloaded:");
@@ -71,21 +64,24 @@ ids.forEach( async (id) => {
     title = title.replace(/[\\/:*?"<>|]/g, '');
     let path = `${config.OutputPath}/${title.trim()}.mp3`
     
-    console.log(`started process for id ${id} -> ${title}`);
-
-    let stream = await ytdlp.stream(
-        url,
-        {
-            filter: "audioonly",
-            format: "bestaudio",
-            onProgress: (progress) => {
-                if(progress.status === 'downloading'){console.log(`\x1b[32m[${id}]\x1b[0m ${title.trim()}\n\x1b[32m[${progress.percentage_str}]\x1b[0m ${progress.downloaded_str}/${progress.total_str} @ ${progress.speed_str} - ${progress.eta_str}\n`);}
-                else if(progress.status === 'finished'){console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", `${config.OutputPath}/${title.trim()}.mp3`, ` ${progress.total_str}`);}
-                else {console.log("Unknown status!");console.log(progress);}
-            }
-        },
-    );
-
-    await convertStreamToMp3(stream, path);
+    if(fs.existsSync(path)){console.log(`\x1b[31mFile ${path} already exists! Skipping\x1b`);}
+    else{
+        console.log(`\x1b[32m[${id}]\x1b[0m started process for id -> ${title}`);
+    
+        let stream = ytdlp.stream(
+            url,
+            {
+                filter: "audioonly",
+                format: "bestaudio",
+                onProgress: (progress) => {
+                    if(progress.status === 'downloading'){console.log(`\n\x1b[32m[${id}]\x1b[0m ${title.trim()}\n\x1b[32m[${progress.percentage_str}]\x1b[0m ${progress.downloaded_str}/${progress.total_str} @ ${progress.speed_str} - ${progress.eta_str}\n`);}
+                    else if(progress.status === 'finished'){console.log('\x1b[32m%s\x1b[0m',"\n Downloaded MP3 to:", `${config.OutputPath}/${title.trim()}.mp3`, ` ${progress.total_str}`);}
+                    else {console.log("Unknown status!");console.log(progress);}
+                }
+            },
+        );
+    
+        convertStreamToMp3(stream, path);
+    }
 });
 
