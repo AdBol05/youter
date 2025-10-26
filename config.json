@@ -1,6 +1,5 @@
 {
     "URLpath": "./URL.txt",
     "OutputPath": "./download",
-    "DefaultThreads": 1,
-    "ClearURL": false
+    "ClearURL": true
     }
