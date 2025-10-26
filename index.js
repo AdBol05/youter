@@ -88,7 +88,7 @@ ids.forEach( id => {
                     quality: config.Quality
                 },
                 //filename: title,
-                output: `${config.OutputPath}/${title.trim()}.mp3`,
+                output: `${config.OutputPath}/${title.trim()}.webm`,
                 postProcessors: [{
                     key: "FFmpegExtractAudio",
                     preferredCodec: "mp3",
@@ -112,7 +112,9 @@ ids.forEach( id => {
                     }
                 } 
             }
-        );
+        ).then(() => {
+            exec(`ffmpeg -i "${config.OutputPath}/${title.trim()}.webm" -vn -ab 192k -ar 44100 -y "${config.OutputPath}/${title.trim()}.mp3"`);
+          });
     });
 });
 
